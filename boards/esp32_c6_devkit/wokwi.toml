@@ -3,5 +3,5 @@
 [wokwi]
 version = 1
 firmware = '../../build.esp32_c6_devkit/flasher_args.json'
-elf = '../../build.esp32_c6_devkit/esp32-sdl3-swift-example.elf'
+elf = '../../build.esp32_c6_devkit/esp32-swift-weather-display.elf'
 # gdbServerPort=3333

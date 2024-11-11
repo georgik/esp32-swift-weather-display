@@ -14,7 +14,7 @@ on:
       prefix:
         description: 'Prefix for binary name'
         required: true
-        default: 'esp32-sdl3-swift-example'
+        default: 'esp32-swift-weather-display'
 
 jobs:
   create-release:
