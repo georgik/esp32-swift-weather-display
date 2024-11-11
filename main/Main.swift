@@ -408,7 +408,12 @@ func fetch_weather_data() {
     response_len = 0
 
     var config = esp_http_client_config_t()
-    config.url = unsafeBitCast(urlCString, to: UnsafePointer<CChar>.self)
+
+    // Bind the memory of `urlCString` directly to `CChar`
+    urlCString.withMemoryRebound(to: CChar.self, capacity: urlStringLiteral.utf8.count + 1) { urlCStringPtr in
+        config.url = UnsafePointer(urlCStringPtr)
+    }
+
     config.method = HTTP_METHOD_GET
     config.timeout_ms = 5000
     config.event_handler = http_event_handler
@@ -540,11 +545,7 @@ func initialize_sdl() {
         return
     }
 
-#if TARGET_ESP32_C3
-    let windowHeight = Int32(BSP_LCD_V_RES - 30)
-#else
     let windowHeight = Int32(BSP_LCD_V_RES)
-#endif
 
     window = SDL_CreateWindow("SDL on ESP32", Int32(BSP_LCD_H_RES), windowHeight, 0)
     if window == nil {
@@ -637,11 +638,7 @@ func render_weather_data() {
     let sunsetString = "Sunset: \(sunsetHour):\(sunsetMinute)"
     texts.append(sunsetString)
 
-    #if TARGET_ESP32_C3
     var xPosition: Float = 50.0
-    #else
-    var xPosition: Float = 10.0
-    #endif
     var yPosition: Float = 30.0
 
 
