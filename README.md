@@ -36,15 +36,11 @@ export TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/To
 
 ### Build for ESP32-C3-LcdKit
 
-![ESP32-C3-LcdKit](docs/img/esp32-c3-lcdkit.webp)
-
 ```shell
 idf.py @boards/esp32_c3_lcdkit.cfg flash monitor
 ```
 
 ### Build for ESP32-C6-DevKit
-
-![ESP32-C6-DevKit](docs/img/esp32-c6-devkit.webp)
 
 The configuration of this board is based on [ESP-BSP Generic](https://developer.espressif.com/blog/using-esp-bsp-with-devkits/) which allows configuration using menuconfig.
 
