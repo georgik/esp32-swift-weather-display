@@ -38,7 +38,7 @@ jobs:
           path: boards/${{ matrix.board }}
           elf: build.${{ matrix.board }}/${{ github.event.inputs.prefix }}-${{ matrix.board }}.bin
           timeout: 20000
-          expect_text: 'Entering main loop...'
+          expect_text: 'Weather data rendered.'
           fail_text: 'Rebooting...'
           serial_log_file: 'wokwi-logs-${{ matrix.board }}.txt'
 

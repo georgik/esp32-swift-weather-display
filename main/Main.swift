@@ -136,6 +136,7 @@ func sdl_thread_entry_point(arg: UnsafeMutableRawPointer?) -> UnsafeMutableRawPo
 
     // Render weather data
     render_weather_data()
+    print("Weather data rendered.")
 
     // Optionally, enter deep sleep or restart
     while true {
@@ -539,7 +540,13 @@ func initialize_sdl() {
         return
     }
 
-    window = SDL_CreateWindow("SDL on ESP32", Int32(BSP_LCD_H_RES), Int32(BSP_LCD_V_RES), 0)
+#if TARGET_ESP32_C3
+    let windowHeight = Int32(BSP_LCD_V_RES - 30)
+#else
+    let windowHeight = Int32(BSP_LCD_V_RES)
+#endif
+
+    window = SDL_CreateWindow("SDL on ESP32", Int32(BSP_LCD_H_RES), windowHeight, 0)
     if window == nil {
         // print("Failed to create window: \(String(cString: SDL_GetError()))")
         return
@@ -630,9 +637,15 @@ func render_weather_data() {
     let sunsetString = "Sunset: \(sunsetHour):\(sunsetMinute)"
     texts.append(sunsetString)
 
-    var yPosition: Float = 10.0
+    #if TARGET_ESP32_C3
+    var xPosition: Float = 50.0
+    #else
+    var xPosition: Float = 10.0
+    #endif
+    var yPosition: Float = 30.0
 
-    var destRect = SDL_FRect(x: 10.0, y: yPosition, w: 10.0, h: 10.0)
+
+    var destRect = SDL_FRect(x: xPosition, y: yPosition, w: 10.0, h: 10.0)
     for text in texts {
         let color = SDL_Color(r: 255, g: 255, b: 255, a: 255)
         let surface = TTF_RenderText_Blended(font, text, 0, color)

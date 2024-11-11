@@ -8,9 +8,9 @@ Read more about Swift for ESP32 at [Espressif Developer Portal](https://develope
 
 ## On-line Demo Simulation
 
-[![ESP32-P4 SDL3 Swift Simulation](docs/img/esp32-p4-sdl3-swift.webp)](https://wokwi.com/experimental/viewer?diagram=https%3A%2F%2Fraw.githubusercontent.com%2Fgeorgik%2Fesp32-sdl3-swift-example%2Fmain%2Fboards%2Fesp32_p4_function_ev_board%2Fdiagram.json&firmware=https%3A%2F%2Fgithub.com%2Fgeorgik%2Fesp32-sdl3-swift-example%2Freleases%2Fdownload%2Fv1.0.0%2Fesp32-sdl3-swift-example-esp32_p4_function_ev_board.bin)
+[![ESP32-C6 Swift Weather Display](docs/img/esp32-c3-swift-weather-display.webp)](https://wokwi.com/experimental/viewer?diagram=https%3A%2F%2Fraw.githubusercontent.com%2Fgeorgik%2Fesp32-swift-weather-display%2Fmain%2Fboards%2Fesp32_c6_devkit%2Fdiagram.json&firmware=https%3A%2F%2Fgithub.com%2Fgeorgik%2Fesp32-swift-weather-display%2Freleases%2Fdownload%2Fv1.0.0%2Fesp32-swift-weather-display-esp32_c6_devkit.bin)
 
-[Run the ESP32-P4 SDL3 Swift with Wokwi.com](https://wokwi.com/experimental/viewer?diagram=https%3A%2F%2Fraw.githubusercontent.com%2Fgeorgik%2Fesp32-sdl3-swift-example%2Fmain%2Fboards%2Fesp32_p4_function_ev_board%2Fdiagram.json&firmware=https%3A%2F%2Fgithub.com%2Fgeorgik%2Fesp32-sdl3-swift-example%2Freleases%2Fdownload%2Fv1.0.0%2Fesp32-sdl3-swift-example-esp32_p4_function_ev_board.bin)
+[ESP32-C6 Swift Weather Display with Wokwi.com](https://wokwi.com/experimental/viewer?diagram=https%3A%2F%2Fraw.githubusercontent.com%2Fgeorgik%2Fesp32-swift-weather-display%2Fmain%2Fboards%2Fesp32_c6_devkit%2Fdiagram.json&firmware=https%3A%2F%2Fgithub.com%2Fgeorgik%2Fesp32-swift-weather-display%2Freleases%2Fdownload%2Fv1.0.0%2Fesp32-swift-weather-display-esp32_c6_devkit.bin)
 
 ## Requirements
 
