@@ -3,7 +3,6 @@ idf_component_register(
     SRCS
         "wrappers.c"
     PRIV_INCLUDE_DIRS "."
-    LDFRAGMENTS "linker.lf"
     REQUIRES
         nvs_flash
         esp_wifi
@@ -54,20 +53,13 @@ endforeach()
 target_compile_options(${COMPONENT_LIB} PUBLIC "$<$<COMPILE_LANGUAGE:Swift>:SHELL:
         -target riscv32-none-none-eabi
         -Xfrontend -function-sections -enable-experimental-feature Embedded -wmo -parse-as-library -Osize
-        -Xcc -march=${march_flag} -Xcc -mabi=${mabi_flag}
+        -Xcc -march=${march_flag} -Xcc -mabi=${mabi_flag} -Xcc -fno-pic -Xcc -fno-pie
         -pch-output-dir /tmp
         -Xfrontend -enable-single-module-llvm-emission
         ${SWIFT_INCLUDES}
         -import-bridging-header ${CMAKE_CURRENT_LIST_DIR}/BridgingHeader.h
     >")
 
-# Link the Swift standard library
-target_link_options(${COMPONENT_LIB} PRIVATE
-    "-Xlinker" "--start-group"
-    "-lswiftCore"
-    "-lswiftStdlibStubs"
-    "-Xlinker" "--end-group"
-)
 
 # Enable Swift support in CMake, force Whole Module builds (required by Embedded Swift), and use "CMAKE_Swift_COMPILER_WORKS" to
 # skip the trial compilations which don't (yet) correctly work when cross-compiling.
@@ -81,4 +73,11 @@ target_sources(${COMPONENT_LIB}
     PRIVATE
     Main.swift
     FileSystem.swift
+)
+
+add_custom_command(
+    TARGET ${COMPONENT_LIB}
+    POST_BUILD
+    COMMAND ${CMAKE_OBJCOPY} --remove-section .swift_modhash
+            $<TARGET_FILE:${COMPONENT_LIB}> $<TARGET_FILE:${COMPONENT_LIB}>
 )

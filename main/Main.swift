@@ -379,7 +379,16 @@ func fetch_weather_data() {
     let countryCode = String(cString: openweather_code)
     let apiKey = String(cString: openweather_api_key)
 
-    if apiKey == "openweathermap.org_key" {
+    // Following comparison causes linker problem with missing unicode functions.
+    // The other option is to compare via CChar
+    // if apiKey == "openweathermap.org_key" {
+    // }
+
+    // Define the target key as a CChar array
+    let targetKey: [CChar] = Array("openweathermap.org_key".utf8CString)
+
+    // Compare the CChar arrays directly
+    if memcmp(apiKey, targetKey, targetKey.count) == 0 {
         print("Open Weather Map API key not set in nvs.csv, generating mock data...")
         mock_weather_data()
         return
