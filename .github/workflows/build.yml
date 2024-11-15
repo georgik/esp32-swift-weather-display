@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        board: [esp32_c3_lcdkit, esp32_c6_devkit]
+        board: [esp32_c3_lcdkit, esp32_c6_devkit, esp32_p4_function_ev_board]
       fail-fast: false
 
     steps:
