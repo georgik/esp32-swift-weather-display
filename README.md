@@ -40,7 +40,17 @@ export TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/To
 idf.py @boards/esp32_c3_lcdkit.cfg flash monitor
 ```
 
-### Build for ESP32-C6-DevKit
+### Build for ESP32-P4-Function-EV-Board
+
+```shell
+idf.py @boards/esp32_p4_function_ev_board.cfg flash monitor
+```
+
+Note: Wi-Fi communication is handled by ESP32-C6 chip on the board.
+The communication between ESP32-P4 and ESP32-C6 is based on [esp_wifi_remote component](https://components.espressif.com/components/espressif/esp_wifi_remote).
+
+
+### Build for ESP32-C6-DevKit or Custom Devkit
 
 The configuration of this board is based on [ESP-BSP Generic](https://developer.espressif.com/blog/using-esp-bsp-with-devkits/) which allows configuration using menuconfig.
 
