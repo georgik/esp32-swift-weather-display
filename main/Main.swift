@@ -227,7 +227,7 @@ func wifi_init_sta() {
 
     // Check the event bits to determine the connection status
     if (bits & WIFI_CONNECTED_BIT) != 0 {
-        ESP_LOGI(TAG, "Connected to AP SSID:\(String(cString: wifi_ssid)) password:***")
+        ESP_LOGI(TAG, "Connected to AP")
     } else if (bits & WIFI_FAIL_BIT) != 0 {
         ESP_LOGI(TAG, "Failed to connect to SSID:\(String(cString: wifi_ssid)), password:***")
     } else {

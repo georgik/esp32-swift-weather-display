@@ -22,6 +22,6 @@ dependencies:
     - if: "${BUILD_BOARD} == esp32_c3_lcdkit"
 
   espressif/esp_bsp_generic:
-    version: "==1.2.1"
+    version: "==3.0.0~1"
     rules:
     - if: "${BUILD_BOARD} == esp_bsp_generic"
